@@ -5,7 +5,7 @@ nodes = {
     1:{
         "Node ID": 1,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [2,5],
+        "Neighbors": [2,3,4,5],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -17,7 +17,7 @@ nodes = {
     2:{
         "Node ID": 2,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [1,3,6],
+        "Neighbors": [6,7],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -29,7 +29,7 @@ nodes = {
     3:{
         "Node ID": 3,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [2,4,7],
+        "Neighbors": [8,9],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -41,7 +41,7 @@ nodes = {
     4:{
         "Node ID": 4,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [3,8],
+        "Neighbors": [9,10],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -53,7 +53,7 @@ nodes = {
     5:{
         "Node ID": 5,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [1,6,9],
+        "Neighbors": [11],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -65,7 +65,7 @@ nodes = {
     6:{
         "Node ID": 6,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [2,5,7],
+        "Neighbors": [12],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -77,7 +77,7 @@ nodes = {
     7:{
         "Node ID": 7,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [3,6,8],
+        "Neighbors": [12],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -89,7 +89,7 @@ nodes = {
     8:{
         "Node ID": 8,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [4,7,10],
+        "Neighbors": [13],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -101,7 +101,7 @@ nodes = {
     9:{
         "Node ID": 9,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [5],
+        "Neighbors": [13],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -113,7 +113,7 @@ nodes = {
     10:{
         "Node ID": 10,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [8],
+        "Neighbors": [14],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -125,7 +125,7 @@ nodes = {
     11:{
         "Node ID": 11,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [12,14],
+        "Neighbors": [14],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -137,7 +137,7 @@ nodes = {
     12:{
         "Node ID": 12,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [11,13],
+        "Neighbors": [15],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -149,7 +149,7 @@ nodes = {
     13:{
         "Node ID": 13,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [12],
+        "Neighbors": [15],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -161,7 +161,7 @@ nodes = {
     14:{
         "Node ID": 14,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [11,15],
+        "Neighbors": [15],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -173,7 +173,7 @@ nodes = {
     15:{
         "Node ID": 15,
         "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
-        "Neighbors": [14],
+        "Neighbors": [],
         "Initial Energy": np.random.randint(100, 201),
         "Residual Energy": np.random.randint(100, 201),
         "PRR": np.random.uniform(0.8, 0.91),
@@ -207,8 +207,32 @@ def g_of_n(node):
 x_coords = [info["Position"][0] for node,info in nodes.items()]
 y_coords = [info["Position"][1] for node,info in nodes.items()]
 
-plt.scatter(x_coords,y_coords)
-plt.show()
+def astar(source, sink):
+    closed = []
+    closed.append(source)
+    while(closed[-1] != sink):
+        node = closed[-1]
+        successor = [0,0]
+        print(node)
+        neighbors = nodes[node]['Neighbors']
+        for neighbor in neighbors:
+            if(neighbor == sink):
+                successor[1] = neighbor
+                break
+            if(neighbor not in closed):
+                fn = g_of_n(source) + calculate_heuristic(neighbor,sink)
+                if(fn > successor[0]):
+                    successor[0] = fn
+                    successor[1] = neighbor
+        closed.append(successor[1])
 
-print(calculate_heuristic(3,15))
-print(g_of_n(3))
+    return closed
+
+    
+
+print(astar(1,15))
+# plt.scatter(x_coords,y_coords)
+# plt.show()
+
+# print(calculate_heuristic(3,15))
+# print(g_of_n(3))
