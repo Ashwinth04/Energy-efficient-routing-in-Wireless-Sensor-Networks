@@ -4,10 +4,10 @@ import numpy as np
 nodes = {
     1:{
         "Node ID": 1,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (100, 200),
         "Neighbors": [2,3,4,5],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 100,
+        "Residual Energy": 95,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -16,10 +16,10 @@ nodes = {
     },
     2:{
         "Node ID": 2,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (50,150),
         "Neighbors": [6,7],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 98,
+        "Residual Energy": 90,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -28,10 +28,10 @@ nodes = {
     },
     3:{
         "Node ID": 3,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (100,150),
         "Neighbors": [8,9],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 95,
+        "Residual Energy": 95,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -40,10 +40,10 @@ nodes = {
     },
     4:{
         "Node ID": 4,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (150,150),
         "Neighbors": [9,10],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 90,
+        "Residual Energy": 75,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -52,10 +52,10 @@ nodes = {
     },
     5:{
         "Node ID": 5,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (200,150),
         "Neighbors": [11],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 85,
+        "Residual Energy": 83,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -64,10 +64,10 @@ nodes = {
     },
     6:{
         "Node ID": 6,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (33,100),
         "Neighbors": [12],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 83,
+        "Residual Energy": 50,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -76,10 +76,10 @@ nodes = {
     },
     7:{
         "Node ID": 7,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (66,100),
         "Neighbors": [12],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 87,
+        "Residual Energy": 77,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -88,10 +88,10 @@ nodes = {
     },
     8:{
         "Node ID": 8,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (99,100),
         "Neighbors": [13],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 73,
+        "Residual Energy": 70,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -100,10 +100,10 @@ nodes = {
     },
     9:{
         "Node ID": 9,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (133,100),
         "Neighbors": [13],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 65,
+        "Residual Energy": 62,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -112,10 +112,10 @@ nodes = {
     },
     10:{
         "Node ID": 10,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (166,100),
         "Neighbors": [14],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 60,
+        "Residual Energy": 30,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -124,10 +124,10 @@ nodes = {
     },
     11:{
         "Node ID": 11,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (199,100),
         "Neighbors": [14],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 55,
+        "Residual Energy": 55,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -136,10 +136,10 @@ nodes = {
     },
     12:{
         "Node ID": 12,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (75,50),
         "Neighbors": [15],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 30,
+        "Residual Energy": 25,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -148,10 +148,10 @@ nodes = {
     },
     13:{
         "Node ID": 13,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (140,50),
         "Neighbors": [15],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 45,
+        "Residual Energy": 45,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -160,10 +160,10 @@ nodes = {
     },
     14:{
         "Node ID": 14,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (185,50),
         "Neighbors": [15],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 38,
+        "Residual Energy": 33,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -172,10 +172,10 @@ nodes = {
     },
     15:{
         "Node ID": 15,
-        "Position": (np.random.uniform(0, 200), np.random.uniform(0, 200)),
+        "Position": (100,10),
         "Neighbors": [],
-        "Initial Energy": np.random.randint(100, 201),
-        "Residual Energy": np.random.randint(100, 201),
+        "Initial Energy": 35,
+        "Residual Energy": 25,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -207,13 +207,20 @@ def g_of_n(node):
 x_coords = [info["Position"][0] for node,info in nodes.items()]
 y_coords = [info["Position"][1] for node,info in nodes.items()]
 
+def calculate_total_energy():
+    energy = 0
+    for _, node_dict in nodes.items():
+        energy += node_dict["Residual Energy"]
+
+    return energy
+
 def astar(source, sink):
     closed = []
     closed.append(source)
     while(closed[-1] != sink):
         node = closed[-1]
         successor = [0,0]
-        print(node)
+        # print(node)
         neighbors = nodes[node]['Neighbors']
         for neighbor in neighbors:
             if(neighbor == sink):
@@ -228,9 +235,23 @@ def astar(source, sink):
 
     return closed
 
-    
+x_coords = []
+y_coords = []
+for node,node_dict in nodes.items():
+    x_coords.append(node_dict["Position"][0])
+    y_coords.append(node_dict["Position"][1])
 
+plt.scatter(x_coords,y_coords)
+
+for node,node_dict in nodes.items():
+    first = node_dict["Position"]
+    for n in node_dict["Neighbors"]:
+        second = nodes[n]["Position"]
+        plt.plot([first[0],second[0]],[first[1],second[1]])
+plt.show()
+print("Initial energy: ",calculate_total_energy())
 print(astar(1,15))
+print("Final energy: ",calculate_total_energy())
 # plt.scatter(x_coords,y_coords)
 # plt.show()
 
