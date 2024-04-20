@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import copy
 
 nodes = {
     1:{
@@ -53,9 +54,9 @@ nodes = {
     5:{
         "Node ID": 5,
         "Position": (200,150),
-        "Neighbors": [11],
+        "Neighbors": [10,11],
         "Initial Energy": 85,
-        "Residual Energy": 83,
+        "Residual Energy": 25,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -163,7 +164,7 @@ nodes = {
         "Position": (185,50),
         "Neighbors": [15],
         "Initial Energy": 38,
-        "Residual Energy": 33,
+        "Residual Energy": 38,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -175,7 +176,7 @@ nodes = {
         "Position": (100,10),
         "Neighbors": [],
         "Initial Energy": 35,
-        "Residual Energy": 25,
+        "Residual Energy": 22,
         "PRR": np.random.uniform(0.8, 0.91),
         "Buffer Capacity": np.random.randint(8, 11),
         "Free Buffer": np.random.randint(8, 11),
@@ -207,36 +208,70 @@ def g_of_n(node):
 x_coords = [info["Position"][0] for node,info in nodes.items()]
 y_coords = [info["Position"][1] for node,info in nodes.items()]
 
-def calculate_total_energy():
+def calculate_total_energy(nodes_dict):
     energy = 0
-    for _, node_dict in nodes.items():
+    for _, node_dict in nodes_dict.items():
         energy += node_dict["Residual Energy"]
 
     return energy
 
+def calculate_distance(first,second):
+    return((first[0] - second[0])**2 + (first[1] - second[1])**2)**0.5
+
+def calculate_energy_for_path(path):
+    temp_nodes = copy.deepcopy(nodes)
+    for i in range(0,len(path)-1):
+        t = temp_nodes[path[i]]
+        r = temp_nodes[path[i+1]]
+        transmission_energy, reception_energy = calculate_trans_rec_energy(path[i],path[i+1],4,temp_nodes)
+        t["Residual Energy"] -= transmission_energy
+        r["Residual Energy"] -= reception_energy
+    return calculate_total_energy(temp_nodes)
+
+def calculate_trans_rec_energy(node1,node2,k,nodes_dict):
+    transmitter = nodes_dict[node1]
+    # print(node1,node2)
+    receiver = nodes_dict[node2]
+    E_elec = 5
+    epsilon = 10
+    d = calculate_distance(transmitter["Position"],receiver["Position"])
+    transmission_energy = k*(E_elec + epsilon*d*d/10000000)
+    reception_energy = k*E_elec
+
+    return transmission_energy, reception_energy
+
+
 def astar(source, sink):
     closed = []
     closed.append(source)
+    cost_list = [0]
     while(closed[-1] != sink):
         node = closed[-1]
         successor = [0,0]
-        # print(node)
         neighbors = nodes[node]['Neighbors']
+        # print(neighbors)
         for neighbor in neighbors:
             if(neighbor == sink):
                 successor[1] = neighbor
                 break
             if(neighbor not in closed):
-                fn = g_of_n(source) + calculate_heuristic(neighbor,sink)
-                if(fn > successor[0]):
-                    successor[0] = fn
-                    successor[1] = neighbor
+                fn = sum(cost_list) + g_of_n(node) + calculate_heuristic(neighbor,sink)
+                cost_list.append(g_of_n(node))
+                # if(fn > successor[0]):
+                successor[0] = fn
+                successor[1] = neighbor
         closed.append(successor[1])
-
+        # print(closed)
+        transmission_energy, reception_energy = calculate_trans_rec_energy(node,successor[1],4,nodes)
+        nodes[node]["Residual Energy"] -= transmission_energy
+        nodes[node]["Residual Energy"] -= reception_energy
     return closed
 
 x_coords = []
 y_coords = []
+
+
+
 for node,node_dict in nodes.items():
     x_coords.append(node_dict["Position"][0])
     y_coords.append(node_dict["Position"][1])
@@ -248,12 +283,15 @@ for node,node_dict in nodes.items():
     for n in node_dict["Neighbors"]:
         second = nodes[n]["Position"]
         plt.plot([first[0],second[0]],[first[1],second[1]])
-plt.show()
-print("Initial energy: ",calculate_total_energy())
-print(astar(1,15))
-print("Final energy: ",calculate_total_energy())
-# plt.scatter(x_coords,y_coords)
-# plt.show()
 
-# print(calculate_heuristic(3,15))
-# print(g_of_n(3))
+plt.show()
+
+path = [1,3,8,13,15]
+print(f"Path = {path}, Residual Energy of network if this path is taken: {calculate_energy_for_path(path)}")
+
+path = [1,2,7,12,15]
+print(f"Path = {path}, Residual Energy of network if this path is taken: {calculate_energy_for_path(path)}")
+
+print("Initial energy: ",calculate_total_energy(nodes))
+print(astar(1,15))
+print("Final energy: ",calculate_total_energy(nodes))
