@@ -49,7 +49,6 @@ def calculate_energy_for_path(path):
 
 def calculate_trans_rec_energy(node1,node2,k,nodes_dict):
     transmitter = nodes_dict[node1]
-    # print(node1,node2)
     receiver = nodes_dict[node2]
     E_elec = 5
     epsilon = 10
@@ -68,7 +67,6 @@ def astar(source, sink):
         node = closed[-1]
         successor = [0,0]
         neighbors = nodes[node]['Neighbors']
-        # print(neighbors)
         for neighbor in neighbors:
             if(neighbor == sink):
                 successor[1] = neighbor
@@ -76,11 +74,10 @@ def astar(source, sink):
             if(neighbor not in closed):
                 fn = sum(cost_list) + g_of_n(node) + calculate_heuristic(neighbor,sink)
                 cost_list.append(g_of_n(node))
-                # if(fn > successor[0]):
-                successor[0] = fn
-                successor[1] = neighbor
+                if(fn > successor[0]):
+                    successor[0] = fn
+                    successor[1] = neighbor
         closed.append(successor[1])
-        # print(closed)
         transmission_energy, reception_energy = calculate_trans_rec_energy(node,successor[1],4,nodes)
         nodes[node]["Residual Energy"] -= transmission_energy
         nodes[node]["Residual Energy"] -= reception_energy
@@ -89,21 +86,19 @@ def astar(source, sink):
 x_coords = []
 y_coords = []
 
+for node,node_dict in nodes.items():
+    x_coords.append(node_dict["Position"][0])
+    y_coords.append(node_dict["Position"][1])
 
+plt.scatter(x_coords,y_coords)
 
-# for node,node_dict in nodes.items():
-#     x_coords.append(node_dict["Position"][0])
-#     y_coords.append(node_dict["Position"][1])
+for node,node_dict in nodes.items():
+    first = node_dict["Position"]
+    for n in node_dict["Neighbors"]:
+        second = nodes[n]["Position"]
+        plt.plot([first[0],second[0]],[first[1],second[1]])
 
-# plt.scatter(x_coords,y_coords)
-
-# for node,node_dict in nodes.items():
-#     first = node_dict["Position"]
-#     for n in node_dict["Neighbors"]:
-#         second = nodes[n]["Position"]
-#         plt.plot([first[0],second[0]],[first[1],second[1]])
-
-# plt.show()
+plt.show()
 
 # path = [1,3,8,13,15]
 # print(f"Path = {path}, Residual Energy of network if this path is taken: {calculate_energy_for_path(path)}")
@@ -112,7 +107,7 @@ y_coords = []
 # print(f"Path = {path}, Residual Energy of network if this path is taken: {calculate_energy_for_path(path)}")
 
 # print("Initial energy: ",calculate_total_energy(nodes))
-# print(astar(1,15))
+# print(astar(1,25))
 # print("Final energy: ",calculate_total_energy(nodes))
 
 
@@ -137,20 +132,24 @@ def find_different_path(path):
     for i in range(index+1,len(path)):
         if(path[i] not in nodes[path[i-1]]["Neighbors"]):
             path[i] = random.choice(nodes[path[i-1]]["Neighbors"])
-
+    print(path)
     return path
-
-# print(find_different_path([1,3,8,13,15]))
-
 
 def simulated_annealing(initial_path,temperature, cooling_rate):
     path = initial_path
-    while(temperature > 0.01):
+    costs = []
+    iters = 0
+    while(temperature > 0.001):
         new_path = find_different_path(path)
+        # print(new_path)
         new_cost = calculate_energy_for_path(new_path)
         old_cost = calculate_energy_for_path(path)
+        iters += 1
+        costs.append(new_cost)
+        # paths.append(new_path)
         if(new_cost > old_cost):
             path = new_path
+            # paths.append(path)
             continue
         else:
             dele = old_cost - new_cost
@@ -158,11 +157,12 @@ def simulated_annealing(initial_path,temperature, cooling_rate):
             r = random.randint(0,1)
             if(p > r):
                 path = new_path
+            # paths.append(path)
             temperature= cooling_rate*temperature
 
-    return path
+    return path,costs,iters
 
-initial_path = [1, 5, 11, 14, 15]
+initial_path = [1,5,8,11,19,21,25]
 print(f"Initial path: {initial_path}, Energy if this path was taken = {calculate_energy_for_path(initial_path)}")
-path = simulated_annealing(initial_path,1000,0.1)
-print(f"Path: {path}, Residual Energy = {calculate_energy_for_path(path)}")
+path,costs,iters = simulated_annealing(initial_path,1000,0.95)
+print(f"Path: {path}, Residual Energy = {calculate_energy_for_path(path)}, Number of iterations = {iters}")
